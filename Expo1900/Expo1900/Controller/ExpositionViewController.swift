@@ -18,8 +18,9 @@ class ExpositionViewController: UIViewController {
     // MARK: Properties
     private var exposition: Exposition? {
         didSet {
+            // 여기가 동작
             self.updateUI()
-        }
+        } // 옵져버 KVO
     }
     private let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
     private let numberFormatter = NumberFormatter()
@@ -31,6 +32,7 @@ class ExpositionViewController: UIViewController {
         numberFormatter.numberStyle = .decimal
         
         exposition = fetchExpositionData()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -94,7 +96,7 @@ protocol CustomLabelable: CustomUILabel {
     func setLabelAutoSizeFont()
 }
 
-extension CustomLabelable where Self: UILabel{
+extension CustomLabelable where Self: UILabel {
     func setLabelAutoSizeFont(){
         self.adjustsFontSizeToFitWidth = true
     }
