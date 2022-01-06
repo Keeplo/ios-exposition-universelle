@@ -15,7 +15,7 @@
 ### Demo
 <details><summary>Demo</summary><div markdown="1">
 
-
+![Simulator Screen Recording - iPhone 12 - 2022-01-06 at 18 25 23](https://user-images.githubusercontent.com/24707229/148360682-f83cc8aa-cc39-4514-967c-db6e8bf345e8.gif)
 </div></details>
 <details><summary>UML - Data</summary><div markdown="1">
 
@@ -28,7 +28,8 @@
 
 Decodable을 채택한 타입은 디코딩이 완료되면 해당 데이터를 하나의 인스턴스로 만들기 때문에 `init()`
 initializer를 구현하는 것과 구현하지 않는 것 등등 다양한 방향을 고민해봄
-
+<img width="753" alt="Decodable 고민사항" src="https://user-images.githubusercontent.com/24707229/148360769-86aa8907-9797-4487-94e6-63b2b726f264.png">
+---
 * 매서드 또는 초기자 내부 구현을 잘꾸미면 JSON 내부 프로퍼티 ≡ 매칭할 타입의 프로퍼티 가 1대1 대응 할 필요 없거나 다른 타입으로 타입 캐스팅이 가능해짐    
     ```swift
     struct Exposition: Decodable {
@@ -91,7 +92,8 @@ initializer를 구현하는 것과 구현하지 않는 것 등등 다양한 방�
     위 코드처럼 구현될때 프로퍼티가 비어있으면 nil 담고 인스턴스 생성됨
 
 **적용코드**  
-하나의 데이터가 누락되었다고 해서 모든 데이터 파싱을 실패할 필요가 없기 때문에 초기화에서 모든 데이터를 확인하고 옵셔널처리
+하나의 데이터가 누락되었다고 해서 모든 데이터 파싱을 실패할 필요가 없기 때문에 초기화에서 모든 데이터를 확인하고 옵셔널처리  
+<img width="872" alt="Decodable 적용 코드" src="https://user-images.githubusercontent.com/24707229/148360788-6b0c432e-70f5-403d-b107-569e240b81ea.png">
 
 </div></details>
 <details><summary>화면 전환시 값 전달</summary><div markdown="1">
@@ -104,14 +106,15 @@ initializer를 구현하는 것과 구현하지 않는 것 등등 다양한 방�
     - 델리게이트를 이용한 값 넘김
 
 - 값을 전달할때 해당 인스턴스 내부 데이터를 전달하는 방식을 고민  
-    질문 내용
-    
+    질문 내용  
+    <img width="729" alt="값전달" src="https://user-images.githubusercontent.com/24707229/148360966-202ba9cd-558d-4e9c-a26f-7be38aaed5d4.png">
+
     리뷰어의 피드백을 통해 인스턴스 내부 프로퍼티 값을 나누어 전달하는 건 은닉화, 캡슐화를 망가뜨리는 시도라고 인식
     데이터를 담은 인스턴스를 전달하는 형태로 구현
 
-**적용코드**
-
-
+**적용코드**  
+<img width="795" alt="Screen Shot 2022-01-06 at 6 20 49 PM" src="https://user-images.githubusercontent.com/24707229/148360996-f17e059a-33d6-4727-88b4-bb2266f0084e.png">
+<img width="1020" alt="Screen Shot 2022-01-06 at 6 21 40 PM" src="https://user-images.githubusercontent.com/24707229/148361004-524aa698-7753-473e-a6ad-bba7cda0b53f.png">
 </div></details>
 <details><summary>Default cell style 별로 적용해보기</summary><div markdown="1">
     
@@ -139,7 +142,8 @@ initializer를 구현하는 것과 구현하지 않는 것 등등 다양한 방�
         
 **결론)** Subtitle 이미지 뷰는 셀을 나누는 선이 포함되지 않음. 커스텀 셀로 최종 적용.   
     모든 내용이 cell content 뷰 안에 들어있어야 함(프로젝트 요구사항). 일정한 크기 이미지의 아이콘이 적절
-
+<img width="630" alt="Screen Shot 2022-01-06 at 6 02 20 PM" src="https://user-images.githubusercontent.com/24707229/148361056-068c41a8-2cda-4e3b-9eec-f394635073bf.png">
+<img width="456" alt="커스텀" src="https://user-images.githubusercontent.com/24707229/148361063-c7156abc-22c7-46dc-b68c-8da8740acb94.png">
 </div></details>
 <details><summary>CustomUILabel 만들어서 모든 프로퍼티 설정을 인스턴스 생성마다 설정시키기</summary><div markdown="1">
 
@@ -147,6 +151,8 @@ initializer를 구현하는 것과 구현하지 않는 것 등등 다양한 방�
 
 `extension`으로 추가하기엔 기본 UILabel 기능을 필요로 하는 UI요소가 추가될 가능성이 있기 때문에 상속으로 추가함 
 
-리뷰어의 도움으로 `Protocol`을 이용해서 커스텀 Label이 UILabel이 사용가능한 경우에만 적용되도록 적용
+리뷰어의 도움으로 `Protocol`을 이용해서 커스텀 Label이 UILabel이 사용가능한 경우에만 적용되도록 적용  
+    <img width="456" alt="커스텀" src="https://user-images.githubusercontent.com/24707229/148361113-489b3f9e-dba8-4728-9a2a-af6dc7dccef1.png">
+
 </div></details>
 <br>
